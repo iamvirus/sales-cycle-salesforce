@@ -1,0 +1,192 @@
+<apex:component controller="User_Page_SC" >
+  <html>
+<head>
+<style> 
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 100%;
+}
+    
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,500,300italic,500italic,700italic,900,300);
+
+body {
+  background: #e7edf2;
+  font-size: 16px;
+  font-family: roboto;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  position: relative;
+  background: #d5dbdb;
+}
+
+.nav {
+  list-style: none;
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.nav > li {
+  display: inline-block;
+}
+
+.nav > li:hover {
+  background: #F05A14;
+}
+
+.nav > li:nth-child(1):hover {
+  background: #fff;
+}
+
+.nav > li:nth-child(2):hover, .nav > li:nth-child(2) > ul {
+  background: rgb(240,90,20);
+}
+
+.nav > li:nth-child(3):hover, .nav > li:nth-child(3) > ul {
+  background: rgb(0,160,210);
+}
+
+.nav > li:nth-child(4):hover, .nav > li:nth-child(4) > ul {
+  background: rgb(140,10,145);
+}
+
+.nav > li:nth-child(5):hover, .nav > li:nth-child(5) > ul {
+  background: rgb(30,70,165);
+}
+
+.nav > li:nth-child(6):hover, .nav > li:nth-child(6) > ul {
+  background: rgb(185,0,130);
+}
+
+.nav > li:nth-child(7):hover, .nav > li:nth-child(7) > ul {
+  background: rgb(0,190,235);
+}
+
+.nav > li:nth-child(8):hover, .nav > li:nth-child(8) > ul {
+  background: rgb(0,190,135);
+}
+
+.nav > li > a {
+  display: block;
+  text-decoration: none;
+  color: grey;
+  line-height: 40px;
+  padding: 0px 19px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  cursor: pointer;
+}
+
+.nav > li > a:hover {
+  color: #fff;
+}
+
+.nav > li:hover ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav > li > ul {
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  visibility: hidden;
+  list-style: none;
+  padding: 0px;
+  border-bottom: 3px solid #ccc;
+}
+
+.nav > li > ul > li {
+  margin: 0 auto;
+  width: 1060px;
+  color: #fff;
+}
+
+.nav > li > ul > li > ul {
+  width: 240px;
+  padding: 0px;
+  margin: 40px 25px 40px 0px;
+  float: left;
+}
+
+.nav > li > ul > li > ul > li {
+  list-style: none;
+}
+
+.nav > li > ul > li > ul > li a {
+  display: block;
+  margin-bottom: 8px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.demo-box {
+  background: white;
+  width: 215px;
+  height: 280px;
+  border: 5px solid rgba(0, 0, 0, 0.2); 
+}
+</style>
+</head>
+<body>
+
+
+
+<form>
+    <input type="text" name="search" placeholder="Search.."/>
+</form>
+    <div class="container">
+  <ul class="nav">
+    <li><apex:image value="{!$Resource.LOGO_SC}" height="25"/>
+    </li><li><apex:commandLink value="HOME" action="{!goback_f}"/>
+    <ul>
+        <li>
+          <ul>
+            <li><apex:commandLink value="My Profile:{!value}" action="{!updateProfile_f}"/></li>
+            
+                      </ul>
+        </li>
+     
+      </ul>
+      
+      <li><apex:commandLink value="Product" action="/apex/Product_all_SC" /> </li>
+      
+    </li>
+     <li><apex:commandLink value="About Us" action="/apex/About_us_SC"/>    </li>
+     
+     
+     <li><apex:commandLink value="Contact Us" action="/apex/Contact_us_SC"/>
+     </li><li><apex:commandLink value="Help" action="/apex/Help_SC"/>
+     </li><li><apex:commandLink value="LogOut" action="/apex/Front_Page_SC"/></li>
+  </ul>
+   
+</div>
+  
+ 
+
+</body>
+</html>
+
+</apex:component>

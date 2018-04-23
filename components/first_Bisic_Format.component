@@ -1,0 +1,7 @@
+<apex:component >
+<h1>this is testing text</h1>
+<apex:form >
+<apex:outputText >name of new textbox</apex:outputText>
+<apex:inputText />
+</apex:form>
+</apex:component>
