@@ -1,0 +1,55 @@
+<apex:page controller="Update_Profile_SC" showHeader="false" sidebar="false" applyHtmlTag="false">
+<title>Update Profile</title>
+<link rel="icon" type="image/x-icon" href="{!$Resource.Icon_SC}" />
+
+  <apex:form >
+  <html>
+  <body>
+      <style type="text/css">
+      body{
+      
+      }
+       .Registeration { display: table;
+            height:350px; 
+            padding-left:30px;
+            width:400px; 
+            
+            background-color:#b2bebb;
+                 
+            border:5px hidden grey; 
+            }
+            </style>
+            <c:User_Header_SC ></c:User_Header_SC>
+            <center>
+            <div class="Registeration" ><br/>
+            <center><font size="6"><u>Update</u></font>
+            <br/><br/>
+                  <font size="5">Unique Name:</font><font size="5"><u>{!value}</u></font><br/><br/>
+                      <apex:inputText value="{!name1}" style="width:250px; height:25px;border-radius:5px;" html-placeholder="FULL NAME"/>
+                  <br/><br/>
+                      <apex:inputSecret value="{!pass}" style="width:250px; height:25px;border-radius:5px;" html-placeholder="PASSWORD"/><br/><br/>
+                  
+                      <apex:inputTextarea value="{!address}" style="width:250px;border-radius:5px;" html-placeholder="FULL ADDRESS"/><br/><br/>
+                  
+                      <apex:inputText value="{!email}" style="width:250px; height:25px;border-radius:5px;" html-placeholder="EMAIL ID"/><br/><br/>
+                                   
+                  
+                      <apex:inputText value="{!mobile}" style="width:250px; height:25px;border-radius:5px;" html-placeholder="MOBILE NUMBER"/><br/><br/>
+                  <br/>
+                  <apex:commandButton value="Update Your Account" action="{!updateProfile_f}" style="width:250px; border-radius: 25px; height:35px; border:solid #2e8681; font-size: 16px; color: #b2bebb; " oncomplete="processReturnedValue({!msg}); " ></apex:commandbutton><br/><br/>
+                  <script>
+                      var processReturnedValue = function(msg){
+                      
+                                if(msg==true)
+                                  alert("Saved");
+                                  else
+                                  alert("User Name Already Exist");
+                        };
+                      
+                  </script>
+                  <font size="1"><p>By clicking Create an account, you agree to our Terms and confirm that you have read our Data Policy, including our Cookie Use Policy. You may receive SMS message notifications from This and can opt out at any time.</p></font><br/><br/>
+              </center></div></center>
+  </body>
+  </html>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,55 @@
+<apex:page sidebar="false" showHeader="false" controller="Product_View_SC" standardStylesheets="false" applyHtmlTag="false">
+<title>View Products</title>
+<link rel="icon" type="image/x-icon" href="{!$Resource.Icon_SC}" />
+
+  <apex:form >
+      <c:User_Header_SC ></c:User_Header_SC>
+      <html>
+      <body>
+          <style>
+              .div-right{
+                  width:675px;
+                  height:600px;
+                  background-color:white;
+              }
+              .div-left{
+                  width:600px;
+                  height:600px;
+                  background-color:white;
+              }
+              .sfdc_richtext img {
+                       width:400px !important;
+                       height:400px !important;
+                       border:5px solid black !important;
+                }
+          </style>
+          
+          <table><tr>
+              <td><div class="div-left">
+                  <center><font size="6"><u>{!pobj.name}</u></font><bt/><br/><br/>
+                  <table border="0"><tr><td><apex:outputField value="{!pobj.PImage__c}"/></td></tr></table>
+              </center></div></td>
+              <td><div class="div-right">
+                  <center><font size="6"><u>{!pobj.name}</u></font><bt/><br/><br/>
+                  <font size="5"><u>PRICE:</u></font><font size="5">{!pobj.PPrice__c}</font><br/><br/><br/>
+                  <font size="5"><u>DISCRIPTION:</u></font><br/><font size="4"><p>{!pobj.PDiscription__c}</p></font><br/><br/><br/>
+                  <apex:commandlink value="Purchase" action="{!buy_f}" oncomplete="processReturnedValue({!msg}); " />
+                  <script>
+                      var processReturnedValue = function(msg){
+                      
+                                if(msg==true)
+                                  alert("Success fully Buy");
+                                  
+                        };
+                      
+                  </script>
+                  <br/><br/><br/>
+                  <apex:commandlink value="HOME PAGE" action="{!goback_f}" />
+              </center></div></td>
+          </tr></table>
+      </body>
+      </html>
+      
+      
+  </apex:form>
+</apex:page>

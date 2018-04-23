@@ -1,0 +1,136 @@
+<apex:page showHeader="false" sidebar="false" controller="Admin_SC" applyHtmlTag="false">
+<title>Admin Page</title>
+<link rel="icon" type="image/x-icon" href="{!$Resource.Icon_SC}" />
+  <apex:form >
+    <html>
+    <head>
+    <title>Admin</title>
+    </head>
+      <body>
+        <style type="text/css">
+            body{
+                height:620px;
+                  width:1390px;
+                  background-color:#aab7b8;
+            }
+              .header{
+                  height:40px;
+                  width:100%;
+                  
+                  background-color:#aab7b8;
+              }
+              .left-side{
+                  height:620px;
+                  width:250px;;
+                  background-color:#aab7b8;              
+              }
+              .right-side{
+                  height:100%;
+                  width:1140px;
+                  background-color:white;         
+              }
+              .InternalTop{
+                   height:310px;
+                  width:1140px;
+                 overflow-y: scroll;
+                  
+              }
+              .InternalBottom{
+                   height:310px;
+                  width:1140px;
+                  overflow: scroll;
+                  
+              }
+        </style>
+        <div class="header" align="right">
+          <table>
+            <tr>
+             <td >
+              <font size="5">Welcome:</font>
+             </td>
+             <td style="color:#641e16;">
+                 <font size="5">{!param_value}</font>
+             </td>
+             <td style="padding-left: 400px;padding-right:50px;">
+                 <apex:commandButton value="Logout" action="{!logout_f}" style="background:#aab7b8;border:2px solid black;padding:6px;"/>
+             </td>
+            </tr>
+          </table>
+        </div>
+        <table border="0" style="border:none">
+        <tr>
+        <td>
+        <div class="left-side">
+            <br/>
+            <br/>
+            <apex:inputText value="{!search}" html-placeholder="Search" style="border-radius:5px; width:190px;height:30px;" />
+            <apex:commandButton value="Search" action="{!search_f}" style="border-radius:5px; width:50px;height:30px;"/><br/><br/><br/><br/>
+            <center><font size="6"><u>FUNTION</u></font></center><br/>
+            <br/>
+            <apex:commandButton value="INSERT" action="{!insert_f}" style="border-radius:5px; width:250px;height:30px;"/>
+            <apex:commandButton value="DELETE" action="{!delete_f}" style="border-radius:5px; width:250px;height:30px;"/>
+            <apex:commandButton value="UPDATE" action="{!modified_f}" style="border-radius:5px; width:250px;height:30px;"/>
+            <apex:commandButton Value="VIEW PRODUCT" action="/apex/Product_all_SC" style="border-radius:5px; width:250px;height:30px;"/>
+            
+            <apex:commandButton Value="UPDATE PROFILE" action="/apex/Update_Profile_SC?value=sunny" style="border-radius:5px; width:250px;height:30px;"/>
+            <apex:commandButton VAlue="LOGOUT" action="{!logout_f}" style="border-radius:5px; width:250px;height:30px;"/><br/>
+            <center><font size="5"><u>Search Result:</u></font></center><br/>
+            <h1><center>ID:{!search}<br/>NAME:{!pobj.name}<br/>TYPE:{!pobj.Company__c}<br/>
+            PRICE:{!pobj.PPrice__c}<br/>DISCRIPTION:{!pobj.PDiscription__c}<br/></center></h1>
+           
+            
+        </div></td>
+        <td>
+        <center><font size="6"><u>Most Sell Out Product</u></font></center>
+        <div class="right-side">
+            <div class="InternalTop">
+            
+            <table cellspacing="20">
+            
+            <tr>
+            <apex:repeat var="x" value="{!pro}">
+                <td>
+                    <table border="0"  width="130">
+                    <tr><td><apex:outputField value="{!x.PImage__c}"  /></td></tr>
+                        <tr><td><center><strong><i>ID:</i></strong>{!x.PID__c}</center></td>
+                    </tr><tr>
+                        <td><center><strong><i>NAME:</i></strong>{!x.Name}</center></td></tr>
+                        <tr><td><center><strong><i>PRICE:</i></strong>{!x.PPrice__c}</center></td></tr>
+                        <tr><td><center><strong><i>TYPE:</i></strong>{!x.Company__c}</center></td></tr>
+                        <tr><td><center><strong><i>SELL OUT:</i></strong>{!x.Sell_out__c}</center></td></tr>
+                        </table>
+                    
+                </td>
+                
+            </apex:repeat>
+            </tr></table>
+            
+            </div>
+            <center><font size="6"><u>Product Going Out Of Stock</u></font></center>
+            <div class="InternalBottom">
+            <table cellspacing="70">
+            <tr>
+            <apex:repeat var="x2" value="{!pro1}">
+                <td>
+                    <table border="1"  width="130">
+                        <tr><td><apex:outputField value="{!x2.PImage__c}"  /></td></tr>
+                        <tr><td><strong><i>ID:</i></strong>{!x2.PID__c}</td></tr>
+                        <tr><td><strong><i>NAME:</i></strong>{!x2.Name}</td></tr>
+                        <tr><td><strong><i>PRICE:</i></strong>{!x2.PPrice__c}</td></tr>
+                        <tr><td><strong><i>TYPE:</i></strong>{!x2.Company__c}</td></tr>
+                        <tr><td><strong><i>QUANTITY:</i></strong>{!x2.Quantity__c}</td></tr>
+                        
+                        </table>
+                    
+                </td>
+                
+            </apex:repeat>
+            </tr></table>
+            </div>
+        </div></td>
+        </tr>
+        </table>
+      </body>
+    </html>
+  </apex:form>
+</apex:page>

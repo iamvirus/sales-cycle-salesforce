@@ -1,0 +1,59 @@
+<apex:page sidebar="false" showHeader="false" controller="User_Page_SC" applyHtmlTag="false">
+<title>User Page</title>
+<link rel="icon" type="image/x-icon" href="{!$Resource.Icon_SC}" />
+   <apex:form >
+   <html>
+   <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script language="javascript" type="text/javascript">
+var timerid = 0;
+var images = new Array("{!$Resource.U_LG_SC}" ,"{!$Resource.U_WIRPOOL_SC}","{!$Resource.U_SONY_SC}","{!$Resource.U_ASUS_SC}","{!$Resource.mi}","{!$Resource.samsung}","{!$Resource.apple}","{!$Resource.iball}","{!$Resource.phillips}");
+       
+var countimages = 0;
+function startTime()
+{
+    if(timerid)
+    {
+        timerid = 0;
+    }
+    
+    
+    if(countimages == images.length)
+    {
+        countimages = 0;
+    }
+    
+        document.getElementById("img1").src = images[countimages];
+    
+    countimages++;
+    
+    timerid = setTimeout("startTime()", 2000);
+}
+</script>
+</head>
+
+<body onload="startTime();">
+    <style>
+        .MBODY{
+        width:100%;
+        height:560px;
+        overflow:auto;
+        background-color:white;
+        }
+    </style>
+    <div>
+<c:User_Header_SC ></c:User_Header_SC></div>
+  
+    <div class="MBODY">
+    <center><font size="6">Welcome:<u>{!value}</u></font></center>
+   
+    <center>
+<img id="img1" src="{!$Resource.U_NEXT_SC}" style="height:450px; width:800px;border:5px solid black;"/></center>
+    </div>
+</body>
+</html>
+
+</apex:form>
+
+</apex:page>

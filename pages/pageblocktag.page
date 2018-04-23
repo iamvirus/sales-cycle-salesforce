@@ -1,0 +1,65 @@
+<apex:page sidebar="false" showHeader="false" controller="sampleCon">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <style type="text/css">
+    .page {
+        size:A4 portrait;
+        border: 2px dotted black;    
+    }
+    </style>
+    </head>
+<apex:form >
+<apex:pageBlock title="Demo Testing" helpTitle="help is here" helpUrl="https://www.google.co.in/">
+<apex:pageBlockSection title="Personal Details" columns="4" collapsible="false">
+
+<apex:outputText >Name</apex:outputText>
+<Apex:inputText value="{!n}" />
+
+<apex:outputText >Address</apex:outputText>
+<Apex:inputText />
+
+<apex:outputText >Pincode</apex:outputText>
+<Apex:inputText />
+
+<apex:outputText >Phone no.</apex:outputText>
+<Apex:inputText />
+
+<apex:outputText >Email</apex:outputText>
+<Apex:inputText value="{!x}" />
+
+<apex:outputText >Country</apex:outputText>
+<apex:selectList value="{!countries}" multiselect="true" size="2">
+            <apex:selectOptions value="{!items}"/>
+        </apex:selectList>
+
+</apex:pageBlockSection>
+
+<apex:pageBlockSection title="Qualification" >
+
+<apex:outputText >10th Marks</apex:outputText>
+<Apex:inputText />
+
+<apex:outputText >12 Marks</apex:outputText>
+<Apex:inputText />
+
+<apex:outputText >Passing year</apex:outputText>
+<Apex:inputText />
+<apex:repeat var="x1" value="{!s1}">
+    {!x1.Name}:<br/>
+    {!x1.EmailID__c}<br/>
+</apex:repeat>
+{!stu.Name}<br/>
+{!stu.EmailID__c}
+
+</apex:pageBlockSection>
+<!--pageblockbotton(save) will not insert at same palce in pageblocksextion because button save all section not one-->
+<apex:pageBlockButtons ><!--by default button on both top and bottom, we can set by defining "location"-->
+<apex:commandButton value="save" action="{!s1}"/>
+</apex:pageBlockButtons>
+<apex:commandButton action="{!test}" value="jump"/>
+
+
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>

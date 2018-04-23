@@ -1,0 +1,70 @@
+<apex:page showHeader="false" sidebar="false" controller="product_SC" ApplyHtmlTag="false">
+<title>Product</title>
+<link rel="icon" type="image/x-icon" href="{!$Resource.Icon_SC}" />
+  <apex:form >
+      <html>
+      <body>
+          <style>
+              body{background-color:#d6dbdf;}
+              .header
+              {
+                  height:50px;
+                  background-color:#85929e;
+                  width:100%;
+                  padding-top:10px;
+              }
+              .Mbody{
+                  width:450px;;
+                  height:500px;
+                  padding-top:30px;
+                  margin-left:12cm;
+                  background-color:#85929e;
+                  
+              }
+          </style>
+          <div class="header">
+              <Center><font size="6">Welcome Admin To Query Page</font>
+              </center>
+          </div><br/>
+          <div class="Mbody">
+              <Center>
+              <font size="6"><u>{!param_value}</u></font><br/><br/>
+              <table>
+              <tr>
+                  <td><font size="4">PRODUCT ID</font></td>
+                  <td><apex:inputtext value="{!id}" style="height:30px;width:200px"/></td>
+              </tr>
+              <tr>
+                  <td><font size="4">PRODUCT NAME</font></td>
+                  <td><apex:inputtext value="{!name}" style="height:30px;width:200px"/></td>
+              </tr>
+              <tr>
+                  <td><font size="4">TYPE</font></td>
+                  <td><apex:inputText value="{!company}" style="height:30px;width:200px"/></td>
+              </tr>
+              <tr>
+                  <td><font size="4">PRICE</font></td>
+                  <td><apex:inputText value="{!price}" style="height:30px;width:200px"/></td>
+              </tr>
+              <tr>
+                  <td><font size="4">DISCRIPTION</font></td>
+                  <td><apex:inputTextarea value="{!discription}" style="height:60px;width:200px"/></td>
+              </tr>
+              <tr>
+                  <td><font size="4">Quantity</font></td>
+                  <td><apex:inputText value="{!quantity}" style="height:30px;width:200px"/></td>
+              </tr>
+              <tr><td>Check Product Info.</td></tr><br/><br/>
+              <tr>
+                  
+                  <td><apex:commandButton value="{!param_value}" action="{!done_f}" style="height:30px;width:100px"/></td>
+                  <td><apex:commandButton value="Go Back" action="{!cancel_f}" style="height:30px;width:200px"/></td>
+              </tr>
+              
+              </table>
+              </center>
+          </div>
+      </body>
+      </html>
+  </apex:form>
+</apex:page>

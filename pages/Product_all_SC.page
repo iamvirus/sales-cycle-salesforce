@@ -1,0 +1,65 @@
+<apex:page sidebar="false" showHeader="false" controller="User_Page_SC" applyHtmlTag="false">
+<link rel="icon" type="image/x-icon" href="{!$Resource.Icon_SC}" />
+
+   <apex:form >
+   <html>
+   <head><title>Products</title></head>
+<body>
+      <style>
+      body{
+          background-color:black;
+      }
+        .MBODY{
+        width:100%;
+        height:560px;
+        overflow:auto;
+        background-color:white;
+        position: absolute;
+        }
+        .sfdc_richtext img:hover {
+             height:140px !important;
+             <!-- filter: brightness(80%); -->
+        }
+        
+    </style>
+    <div>
+<c:User_Header_SC ></c:User_Header_SC></div>
+<apex:variable value="{!1}" var="counter"/>
+  
+    <center><div class="MBODY">
+    <center><font size="6">Welcome:<u>{!value}</u></font></center>
+    
+    
+    
+    <table cellspacing="40">
+    <tr>
+    <apex:repeat var="x" value="{!pro}"><td>
+        <table border="0" style="border:2px outset black;box-shadow: 4px 8px 16px rgba(0, 0, 0, .5);">
+        <tr><td><center><apex:commandLink action="{!buyproduct_f}" >
+        <apex:outputField value="{!x.PImage__c}"  />
+        <apex:param name="nickName"
+                value="{!x.PID__c}"
+                assignTo="{!pid}"/>
+        </apex:commandLink></center></td></tr>
+        
+        <tr><td><center><apex:commandLink value="{!x.name}" action="{!buyproduct_f}">
+        <apex:param name="nickName"
+                value="{!x.PID__c}"
+                assignTo="{!pid}"/>
+        </apex:commandLink></center></td></tr>
+        <tr><td><center>PRICE: {!x.PPrice__c} Rs.</center></td></tr>
+        <!-- <tr><td>{!x.PDiscription__c}</td></tr> -->
+        
+        </table>
+     </td>
+     <apex:outputText rendered="{!AND((MOD(counter, 4) == 0), (counter < pro.size))}" value="</tr><tr>" escape="false"/>
+                <apex:variable var="counter" value="{!counter + 1}"/>
+    </apex:repeat></tr>
+    </table>
+    </div></center>
+</body>
+</html>
+
+</apex:form>
+
+</apex:page>
